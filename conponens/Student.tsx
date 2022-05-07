@@ -5,7 +5,11 @@ import styles from "../styles/Home.module.css";
 
 const Student = (props: any) => {
   return (
-    <div className={props.student.sideclass + " " + styles.cardners}>
+    <div
+      className={
+        props.student.sideclass + " " + styles.cardners + " " + styles.zoom
+      }
+    >
       NAME: {props.student.name}
       <br />
       AGE: {props.student.age}
@@ -17,8 +21,8 @@ const Student = (props: any) => {
       <Image
         src={props.student.photo}
         alt="Picture of the author"
-        width={240}
-        height={240}
+        width={150}
+        height={150}
       />
     </div>
   );

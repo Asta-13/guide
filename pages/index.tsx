@@ -3,8 +3,8 @@ import Head from "next/head";
 import Image from "next/image";
 import Student from "../conponens/Student";
 import styles from "../styles/Home.module.css";
-
-const Home: NextPage = () => {
+import { getAllHobbies } from "../lib/hobby";
+export default function Home(props: any) {
   const students = [
     {
       name: "Byambatsogt",
@@ -64,6 +64,7 @@ const Home: NextPage = () => {
       i = i + 1;
     }
   }
+  console.log(props);
   return (
     <div className={styles.container}>
       <div>
@@ -94,6 +95,9 @@ const Home: NextPage = () => {
             {students.map((student: any) => (
               <Student student={student} />
             ))}
+            {/* {props.allHobbies.map((hobby: any) => (
+              <div>{hobby.ner}</div>
+            ))} */}
             <div className={styles.zoom}></div>
           </div>
           <div className={styles.sidebar}>
@@ -110,6 +114,11 @@ const Home: NextPage = () => {
       </footer>
     </div>
   );
-};
+}
 
-export default Home;
+export async function getStaticProps() {
+  const allHobbies = (await getAllHobbies(false)) ?? [];
+  return {
+    props: { allHobbies },
+  };
+}

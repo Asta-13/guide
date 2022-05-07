@@ -92,8 +92,8 @@ export default function Home(props: any) {
         </div>
         <div className={styles.content}>
           <div className={styles.contentbar}>
-            {students.map((student: any) => (
-              <Student student={student} />
+            {students.map((student: any, index: number) => (
+              <Student key={`student_${index}`} student={student} />
             ))}
             {/* {props.allHobbies.map((hobby: any) => (
               <div>{hobby.ner}</div>
@@ -101,8 +101,8 @@ export default function Home(props: any) {
             <div className={styles.zoom}></div>
           </div>
           <div className={styles.sidebar}>
-            {students.map((student: any) => (
-              <Student student={student} />
+            {students.map((student: any, index: number) => (
+              <Student key={`student_${index}`} student={student} />
             ))}
           </div>
         </div>
